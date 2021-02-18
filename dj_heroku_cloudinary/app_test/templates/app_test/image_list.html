@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    {% for image in images %}
+    <img src="{{ image.image_file.url }}" height="200px">
+    {% endfor %}
+{% endblock content %}
