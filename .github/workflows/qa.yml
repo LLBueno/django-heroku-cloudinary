@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  pull_request:
+
+  workflow_dispatch:
+
+jobs:
+
+  test:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Configura Python
+        uses: actions/setup-python@master
+        with:
+          python-version: 3.8
+
+      - name: Instala Dependências
+        run: |
+          pip install pipenv
+          pipenv install --dev --system
+
+      - name: Roda Testes
+        run: python manage.py test
